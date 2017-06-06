@@ -1,0 +1,21 @@
+# Use Travis new infrastructure
+sudo: false
+
+language: python
+
+env:
+  # Generated with https://www.dominicrodger.com/tox-and-travis.html
+  - TOX_ENV=py27-django111-oscar14
+  - TOX_ENV=py27-django111-oscar15
+  - TOX_ENV=py36-django111-oscar14
+  - TOX_ENV=py36-django111-oscar15
+
+
+install:
+    - pip install tox
+
+script:
+    - tox -e $TOX_ENV
+
+notifications:
+  email: false
