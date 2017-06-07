@@ -11,8 +11,8 @@ from django.template.defaultfilters import truncatewords, striptags
 from localflavor.us import us_states
 
 from . import models, exceptions as express_exceptions
-from paypal import gateway
-from paypal import exceptions
+from razorpay import gateway
+from razorpay import exceptions
 
 
 # PayPal methods

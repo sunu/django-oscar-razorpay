@@ -1,2 +1,1 @@
-from paypal.express.admin import *
-from paypal.payflow.admin import *
+from razorpay.admin import *

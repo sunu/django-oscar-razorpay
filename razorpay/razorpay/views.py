@@ -20,12 +20,12 @@ from oscar.core.exceptions import ModuleNotFoundError
 from oscar.core.loading import get_class, get_model
 from oscar.apps.shipping.methods import FixedPrice, NoShippingRequired
 
-from paypal.express.facade import (
+from .facade import (
     get_paypal_url, fetch_transaction_details, confirm_transaction)
-from paypal.express.exceptions import (
+from .exceptions import (
     EmptyBasketException, MissingShippingAddressException,
     MissingShippingMethodException, InvalidBasket)
-from paypal.exceptions import PayPalError
+from razorpay.exceptions import PayPalError
 
 # Load views dynamically
 PaymentDetailsView = get_class('checkout.views', 'PaymentDetailsView')

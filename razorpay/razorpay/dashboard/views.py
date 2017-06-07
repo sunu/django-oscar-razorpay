@@ -1,7 +1,7 @@
 from django.views import generic
 from django.conf import settings
 
-from paypal.express import models
+from razorpay.razorpay import models
 
 
 class TransactionListView(generic.ListView):

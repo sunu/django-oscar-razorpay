@@ -6,7 +6,7 @@
 # Packaging
 dist
 build/
-django_oscar_paypal.egg-info/
+django_oscar_razorpay.egg-info/
 docs/_build
 
 # Testing
@@ -24,3 +24,6 @@ integration.py
 
 # Sandbox
 sandbox/public/media
+
+# Virtualenv
+venv

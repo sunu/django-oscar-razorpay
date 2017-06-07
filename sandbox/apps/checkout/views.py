@@ -4,8 +4,6 @@ from django.core.urlresolvers import reverse
 from oscar.apps.checkout import views
 from oscar.apps.payment import forms, models
 
-from paypal.payflow import facade
-
 
 class PaymentDetailsView(views.PaymentDetailsView):
     """
@@ -75,15 +73,16 @@ class PaymentDetailsView(views.PaymentDetailsView):
         # Using authorization here (two-stage model).  You could use sale to
         # perform the auth and capture in one step.  The choice is dependent
         # on your business model.
-        facade.authorize(
-            order_number, total.incl_tax,
-            kwargs['bankcard'], kwargs['billing_address'])
+        # facade.authorize(
+        #     order_number, total.incl_tax,
+        #     kwargs['bankcard'], kwargs['billing_address'])
 
-        # Record payment source and event
-        source_type, is_created = models.SourceType.objects.get_or_create(
-            name='PayPal')
-        source = source_type.sources.model(
-            source_type=source_type,
-            amount_allocated=total.incl_tax, currency=total.currency)
-        self.add_payment_source(source)
-        self.add_payment_event('Authorised', total.incl_tax)
+        # # Record payment source and event
+        # source_type, is_created = models.SourceType.objects.get_or_create(
+        #     name='PayPal')
+        # source = source_type.sources.model(
+        #     source_type=source_type,
+        #     amount_allocated=total.incl_tax, currency=total.currency)
+        # self.add_payment_source(source)
+        # self.add_payment_event('Authorised', total.incl_tax)
+        pass

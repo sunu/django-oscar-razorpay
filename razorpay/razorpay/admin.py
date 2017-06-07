@@ -1,5 +1,5 @@
 from django.contrib import admin
-from paypal import models
+from . import models
 
 
 class ExpressTransactionAdmin(admin.ModelAdmin):

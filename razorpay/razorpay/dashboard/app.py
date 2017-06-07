@@ -1,9 +1,9 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.contrib.admin.views.decorators import staff_member_required
 
 from oscar.core.application import Application
 
-from paypal.express.dashboard import views
+from . import views
 
 
 class ExpressDashboardApplication(Application):
@@ -12,7 +12,7 @@ class ExpressDashboardApplication(Application):
     detail_view = views.TransactionDetailView
 
     def get_urls(self):
-        urlpatterns = patterns('',
+        urlpatterns = (
             url(r'^transactions/$', self.list_view.as_view(),
                 name='paypal-express-list'),
             url(r'^transactions/(?P<pk>\d+)/$', self.detail_view.as_view(),

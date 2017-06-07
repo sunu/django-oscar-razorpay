@@ -4,7 +4,7 @@ import re
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
-from paypal import base
+from razorpay import base
 
 
 @python_2_unicode_compatible

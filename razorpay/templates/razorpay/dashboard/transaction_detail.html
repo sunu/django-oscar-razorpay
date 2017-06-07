@@ -4,7 +4,7 @@
 {% load url from future %}
 
 {% block title %}
-    {% trans "PayPal Express transaction" %} {{ txn.pnref }} | {{ block.super }}
+    {% trans "Razorpay transaction" %} {{ txn.pnref }} | {{ block.super }}
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -14,10 +14,10 @@
             <span class="divider">/</span>
         </li>
         <li>
-            PayPal <span class="divider">/</span>
+            Razorpay <span class="divider">/</span>
         </li>
         <li>
-            <a href="{% url 'paypal-express-list' %}">{% trans "Express transactions" %}</a>
+            <a href="{% url 'razorpay-list' %}">{% trans "Razorpay transactions" %}</a>
             <span class="divider">/</span>
         </li>
         <li class="active">{{ txn.correlation_id }}</li>
