@@ -1,5 +1,5 @@
 """
-Responsible for briding between Oscar and the PayPal gateway
+Responsible for briding between Oscar and the Razorpay gateway
 """
 from __future__ import unicode_literals
 from uuid import uuid4
@@ -40,7 +40,6 @@ def update_transaction_details(rz_id, txn_id):
     Fetch the completed details about the Razorpay transaction and update our
     tranaction model.
     """
-    # import ipdb; ipdb.set_trace()
     try:
         payment = rz_client.payment.fetch(rz_id)
     except Exception as e:

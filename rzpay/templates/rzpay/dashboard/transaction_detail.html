@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans "Razorpay transaction" %} {{ txn.pnref }} | {{ block.super }}
+    {% trans "Razorpay transaction" %} {{ txn.txnid }} | {{ block.super }}
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -19,12 +19,12 @@
             <a href="{% url 'razorpay-list' %}">{% trans "Razorpay transactions" %}</a>
             <span class="divider">/</span>
         </li>
-        <li class="active">{{ txn.correlation_id }}</li>
+        <li class="active">{{ txn.txnid }}</li>
     </ul>
 {% endblock %}
 
 {% block headertext %}
-    {% blocktrans with id=txn.correlation_id %}
+    {% blocktrans with id=txn.txnid %}
         Transaction {{ id }}
     {% endblocktrans %}
 {% endblock %}
@@ -32,16 +32,14 @@
 {% block dashboard_content %}
     <table class="table table-striped table-bordered">
         <tbody>
-            <tr><th>{% trans "Correlation ID" %}</th><td>{{ txn.correlation_id }}</td></tr>
-            <tr><th>{% trans "Method" %}</th><td>{{ txn.method }}</td></tr>
+            <tr><th>{% trans "Razorpay ID" %}</th><td>{{ txn.rz_id|default:"-" }}</td></tr>
             <tr><th>{% trans "Amount" %}</th><td>{{ txn.amount|default:"-" }}</td></tr>
             <tr><th>{% trans "Currency" %}</th><td>{{ txn.currency }}</td></tr>
-            <tr><th>{% trans "Result" %}</th><td>{{ txn.ack }}</td></tr>
-            <tr><th>{% trans "Token" %}</th><td>{{ txn.token|default:"-" }}</td></tr>
+            <tr><th>{% trans "Status" %}</th><td>{{ txn.status }}</td></tr>
+            <tr><th>{% trans "User" %}</th><td>{{ txn.user }}</td></tr>
+            <tr><th>{% trans "Email" %}</th><td>{{ txn.email }}</td></tr>
             <tr><th>{% trans "Error code" %}</th><td>{{ txn.error_code|default:'-' }}</td></tr>
             <tr><th>{% trans "Error message" %}</th><td>{{ txn.error_message|default:"-" }}</td></tr>
-            <tr><th>{% trans "Request params" %}</th><td>{{ txn.request|safe }}</td></tr>
-            <tr><th>{% trans "Response params" %}</th><td>{{ txn.response|safe }}</td></tr>
             <tr><th>{% trans "Date" %}</th><td>{{ txn.date_created }}</td></tr>
         </tbody>
     </table>

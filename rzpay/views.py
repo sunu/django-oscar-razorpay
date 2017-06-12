@@ -108,12 +108,11 @@ class CancelResponseView(RedirectView):
         return super(CancelResponseView, self).get(request, *args, **kwargs)
 
     def get_redirect_url(self, **kwargs):
-        messages.error(self.request, _("PayPal transaction cancelled"))
+        messages.error(self.request, _("Razorpay transaction cancelled"))
         return reverse('basket:summary')
 
 
 class SuccessResponseView(PaymentDetailsView):
-    template_name_preview = 'rzpay/preview.html'
     preview = True
 
     @property

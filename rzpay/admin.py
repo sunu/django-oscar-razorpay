@@ -2,25 +2,21 @@ from django.contrib import admin
 from . import models
 
 
-# class ExpressTransactionAdmin(admin.ModelAdmin):
-#     list_display = ['method', 'amount', 'currency', 'correlation_id', 'ack',
-#                     'token', 'error_code', 'error_message', 'date_created']
-#     readonly_fields = [
-#         'method',
-#         'version',
-#         'amount',
-#         'currency',
-#         'ack',
-#         'correlation_id',
-#         'token',
-#         'error_code',
-#         'error_message',
-#         'raw_request',
-#         'raw_response',
-#         'response_time',
-#         'date_created',
-#         'request',
-#         'response']
+class RazorpayTransactionAdmin(admin.ModelAdmin):
+    list_display = ['user', 'amount', 'currency', 'txnid', 'status',
+                    'rz_id', 'error_code', 'error_message', 'date_created',
+                    'basket_id', 'email']
+    readonly_fields = [
+        'user',
+        'amount',
+        'currency',
+        'txnid',
+        'rz_id',
+        'error_code',
+        'error_message',
+        'date_created',
+        'basket_id',
+        'email'
+    ]
 
-
-# admin.site.register(models.ExpressTransaction, ExpressTransactionAdmin)
+admin.site.register(models.RazorpayTransaction, RazorpayTransactionAdmin)

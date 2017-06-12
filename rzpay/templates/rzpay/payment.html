@@ -20,12 +20,12 @@
         "theme.color": "#F37254",
         "order_id": "{{ rz_order.id }}",
         "handler": function (response){
-            var url = "{% url 'razorpay-success-response' basket_id=basket.id %}"
+            var url = "{% url 'razorpay-success-response' basket_id=basket.id %}";
             var params = {
                 'rz_id': response.razorpay_payment_id,
                 'txn_id': "{{ txn_id }}"
-            }
-            window.location = url + "?" + $.param(params)
+            };
+            window.location = url + "?" + $.param(params);
         },
         "prefill": {
             "email": "{{ email }}"
@@ -35,7 +35,8 @@
         },
         "modal": {
             "ondismiss": function(){
-                console.log("failed")
+                var url = "{% url 'razorpay-cancel-response' basket_id=basket.id %}";
+                window.location = url;
             }
         },
         "notes": {
@@ -43,7 +44,7 @@
         }
     };
     var rzp = new Razorpay(options);
-    rzp.open()
+    rzp.open();
 </script>
 </body>
 </html>

@@ -6,7 +6,7 @@ from oscar.core.application import Application
 from . import views
 
 
-class ExpressDashboardApplication(Application):
+class RazorpayDashboardApplication(Application):
     name = None
     list_view = views.TransactionListView
     detail_view = views.TransactionDetailView
@@ -14,9 +14,9 @@ class ExpressDashboardApplication(Application):
     def get_urls(self):
         urlpatterns = (
             url(r'^transactions/$', self.list_view.as_view(),
-                name='paypal-express-list'),
+                name='razorpay-list'),
             url(r'^transactions/(?P<pk>\d+)/$', self.detail_view.as_view(),
-                name='paypal-express-detail'),
+                name='razorpay-detail'),
         )
         return self.post_process_urls(urlpatterns)
 
@@ -24,4 +24,4 @@ class ExpressDashboardApplication(Application):
         return staff_member_required
 
 
-application = ExpressDashboardApplication()
+application = RazorpayDashboardApplication()
