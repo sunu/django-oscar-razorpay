@@ -214,13 +214,9 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.flatpages',
     'django.contrib.staticfiles',
-    # External apps
-    # 1.5.7 still ships with South migrations in the wrong folder,
-    # 1.5.8 contains a fix. Upgrade when released.
-    # 'django_extensions',
     'debug_toolbar',
     # Apps from oscar
-    'razorpay',
+    'rzpay',
     'compressor',
     'widget_tweaks',
 ]
@@ -242,26 +238,23 @@ APPEND_SLASH = True
 from oscar.defaults import *
 OSCAR_ALLOW_ANON_CHECKOUT = True
 
-OSCAR_SHOP_TAGLINE = 'PayPal'
+OSCAR_SHOP_TAGLINE = 'Razorpay'
 
 # Add Payflow dashboard stuff to settings
 from django.utils.translation import ugettext_lazy as _
 OSCAR_DASHBOARD_NAVIGATION.append(
     {
-        'label': _('PayPal'),
+        'label': _('Razorpay'),
         'icon': 'icon-globe',
         'children': [
             {
-                'label': _('PayFlow transactions'),
-                'url_name': 'paypal-payflow-list',
-            },
-            {
-                'label': _('Express transactions'),
-                'url_name': 'paypal-express-list',
+                'label': _('Razorpay transactions'),
+                'url_name': 'razorpay-list',
             },
         ]
     })
 
+OSCAR_DEFAULT_CURRENCY = "INR"
 
 # Haystack settings
 HAYSTACK_CONNECTIONS = {
@@ -270,20 +263,11 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
-# Taken from PayPal's documentation - these should always work in the sandbox
-PAYPAL_SANDBOX_MODE = True
-PAYPAL_CALLBACK_HTTPS = False
-PAYPAL_API_VERSION = '119'
+import keys
 
-# These are the standard PayPal sandbox details from the docs - but I don't
-# think you can get access to the merchant dashboard.
-PAYPAL_API_USERNAME = 'sdk-three_api1.sdk.com'
-PAYPAL_API_PASSWORD = 'QFZCWN5HZM8VBG7Q'
-PAYPAL_API_SIGNATURE = 'A-IzJhZZjhg29XQ2qnhapuwxIDzyAZQ92FRP5dqBzVesOkzbdUONzmOU'
-
-# Standard currency is GBP
-PAYPAL_CURRENCY = PAYPAL_PAYFLOW_CURRENCY = 'GBP'
-PAYPAL_PAYFLOW_DASHBOARD_FORMS = True
+RAZORPAY_API_KEY = keys.RAZORPAY_API_KEY
+RAZORPAY_API_SECRET = keys.RAZORPAY_API_SECRET
+RAZORPAY_CURRENCY = "INR"
 
 # Put your own sandbox settings into an integration.py modulde (that is ignored
 # by git).
@@ -291,4 +275,3 @@ try:
     from integration import *  # noqa
 except ImportError:
     pass
-

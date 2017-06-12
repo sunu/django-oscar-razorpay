@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
 
-from razorpay import VERSION
+from rzpay import VERSION
 
 
 setup(

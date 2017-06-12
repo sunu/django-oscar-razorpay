@@ -1,17 +1,17 @@
 from django.views import generic
 from django.conf import settings
 
-from razorpay.razorpay import models
+from .. import models
 
 
 class TransactionListView(generic.ListView):
-    model = models.ExpressTransaction
+    model = models.RazorpayTransaction
     template_name = 'paypal/express/dashboard/transaction_list.html'
     context_object_name = 'transactions'
 
 
 class TransactionDetailView(generic.DetailView):
-    model = models.ExpressTransaction
+    model = models.RazorpayTransaction
     template_name = 'paypal/express/dashboard/transaction_detail.html'
     context_object_name = 'txn'
 

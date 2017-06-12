@@ -1,7 +1,6 @@
 {% extends "checkout/preview.html" %}
 {% load currency_filters %}
 {% load i18n %}
-{% load url from future %}
 {% load thumbnail %}
 
 {# Null out the actions as they can't be used here #}
@@ -28,10 +27,9 @@
 
 {# Note, we submit to a different URL for placing an Express order #}
 {% block place_order %}
-    <form method="post" action="{% url 'paypal-place-order' basket.id %}">
+    <form method="post" action="{% url 'razorpay-place-order' basket.id %}">
         {% csrf_token %}
-        <input type="hidden" name="payer_id" value="{{ payer_id }}" />
-        <input type="hidden" name="token" value="{{ token }}" />
+        <input type="hidden" name="rz_id" value="{{ rz_id }}" />
         <div class="form-actions">
             <input id='place-order' type="submit" value="{% trans "Place order" %}" class="pull-right btn btn-primary btn-large js-disable-on-click" />
         </div>

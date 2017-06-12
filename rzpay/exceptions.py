@@ -16,3 +16,7 @@ class InvalidBasket(Exception):
 
     The message of this exception is shown to the customer.
     """
+
+
+class RazorpayError(Exception):
+    pass

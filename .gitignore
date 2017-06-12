@@ -24,6 +24,7 @@ integration.py
 
 # Sandbox
 sandbox/public/media
+sandbox/keys.py
 
 # Virtualenv
 venv
