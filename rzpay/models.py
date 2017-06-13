@@ -6,6 +6,10 @@ from django.conf import settings
 from django.utils.encoding import python_2_unicode_compatible
 
 
+def generate_id():
+    return uuid4().hex[:28]
+
+
 @python_2_unicode_compatible
 class RazorpayTransaction(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
@@ -14,7 +18,8 @@ class RazorpayTransaction(models.Model):
     )
     email = models.EmailField(null=True, blank=True)
     txnid = models.CharField(
-        max_length=32, db_index=True, default=uuid4().hex[:28])
+        max_length=32, db_index=True, default=generate_id
+    )
     basket_id = models.CharField(
         max_length=12, null=True, blank=True, db_index=True
     )
