@@ -1,4 +1,5 @@
 django-compressor==1.6
+pycountry==17.5.14
 
 # Testing
 mock==1.0.1
