@@ -14,10 +14,10 @@
         "key": "{{ rz_key }}",
         "amount": "{{ amount }}",
         "buttontext": "Pay with Razorpay",
-        "name": "Instascribe",
-        "description": "Instascribe book",
-        "image": "https://instascribe.com/images/logo_header.png",
-        "theme.color": "#F37254",
+        "name": "{{name}}",
+        "description": "{{description}}",
+        "image": "{{logo_url}}",
+        "theme.color": "{{theme_color}}",
         "order_id": "{{ rz_order.id }}",
         "handler": function (response){
             var url = "{% url 'razorpay-success-response' basket_id=basket.id %}";
@@ -29,9 +29,6 @@
         },
         "prefill": {
             "email": "{{ email }}"
-        },
-        "theme": {
-            "color": "#F37254"
         },
         "modal": {
             "ondismiss": function(){

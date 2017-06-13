@@ -91,7 +91,17 @@ class PaymentView(CheckoutSessionMixin, View):
             "amount": int(amount*100),  # amount in paisa as int
             "rz_key": settings.RAZORPAY_API_KEY,
             "email": email,
-            "txn_id": txn.txnid
+            "txn_id": txn.txnid,
+            "name": getattr(settings, "RAZORPAY_VENDOR_NAME", "InstaScribe"),
+            "description": getattr(
+                settings, "RAZORPAY_DESCRIPTION", "Instascribe book"
+            ),
+            "theme_color": getattr(
+                settings, "RAZORPAY_VENDOR_NAME", "#F37254"
+            ),
+            "logo_url": getattr(
+                settings, "RAZORPAY_VENDOR_LOGO",
+                "https://instascribe.com/images/logo_header.png"),
         }
         return context
 
