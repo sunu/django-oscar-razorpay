@@ -165,12 +165,7 @@ LOGGING = {
             'propagate': False,
             'level': 'DEBUG',
         },
-        'paypal.express': {
-            'handlers': ['console'],
-            'propagate': True,
-            'level': 'DEBUG',
-        },
-        'paypal.payflow': {
+        'razorpay': {
             'handlers': ['console'],
             'propagate': True,
             'level': 'DEBUG',
@@ -210,7 +205,7 @@ OSCAR_ALLOW_ANON_CHECKOUT = True
 
 OSCAR_SHOP_TAGLINE = 'Razorpay'
 
-# Add Payflow dashboard stuff to settings
+# Add Razorpay dashboard stuff to settings
 OSCAR_DASHBOARD_NAVIGATION.append(
     {
         'label': _('Razorpay'),

@@ -33,7 +33,7 @@ SourceType = get_model('payment', 'SourceType')
 
 Applicator = get_class('offer.applicator', 'Applicator')
 
-logger = logging.getLogger('paypal.express')
+logger = logging.getLogger('razorpay')
 
 
 class PaymentView(CheckoutSessionMixin, View):
@@ -67,7 +67,7 @@ class PaymentView(CheckoutSessionMixin, View):
             # making the payment
             basket.freeze()
 
-            logger.info("Basket #%s", basket.id)
+            logger.info("Starting payment for basket #%s", basket.id)
             context = self._start_razorpay_txn(basket)
             return render(request, self.template_name, context)
 
@@ -103,8 +103,7 @@ class CancelResponseView(RedirectView):
         basket = get_object_or_404(Basket, id=kwargs['basket_id'],
                                    status=Basket.FROZEN)
         basket.thaw()
-        logger.info("Payment cancelled (token %s) - basket #%s thawed",
-                    request.GET.get('token', '<no token>'), basket.id)
+        logger.info("Payment cancelled - basket #%s thawed", basket.id)
         return super(CancelResponseView, self).get(request, *args, **kwargs)
 
     def get_redirect_url(self, **kwargs):

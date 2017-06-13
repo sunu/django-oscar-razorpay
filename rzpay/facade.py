@@ -16,7 +16,7 @@ rz_client = razorpay.Client(
     auth=(settings.RAZORPAY_API_KEY, settings.RAZORPAY_API_SECRET)
 )
 
-logger = logging.getLogger('paypal.express')
+logger = logging.getLogger('razorpay')
 
 
 def start_razorpay_txn(basket, amount, user=None, email=None):
