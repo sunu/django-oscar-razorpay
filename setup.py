@@ -18,7 +18,9 @@ setup(
     include_package_data=True,
     install_requires=[
         'requests>=1.0',
-        'django-localflavor'],
+        'django-localflavor',
+        'razorpay==1.0.2',
+    ],
     extras_require={
         'oscar': ["django-oscar>=1.4"]
     },
