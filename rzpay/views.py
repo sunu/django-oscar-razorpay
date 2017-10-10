@@ -92,16 +92,16 @@ class PaymentView(CheckoutSessionMixin, View):
             "rz_key": settings.RAZORPAY_API_KEY,
             "email": email,
             "txn_id": txn.txnid,
-            "name": getattr(settings, "RAZORPAY_VENDOR_NAME", "InstaScribe"),
+            "name": getattr(settings, "RAZORPAY_VENDOR_NAME", "My Store"),
             "description": getattr(
-                settings, "RAZORPAY_DESCRIPTION", "Instascribe book"
+                settings, "RAZORPAY_DESCRIPTION", "Amazing Product"
             ),
             "theme_color": getattr(
-                settings, "RAZORPAY_VENDOR_NAME", "#F37254"
+                settings, "RAZORPAY_THEME_COLOR", "#F37254"
             ),
             "logo_url": getattr(
                 settings, "RAZORPAY_VENDOR_LOGO",
-                "https://instascribe.com/images/logo_header.png"),
+                "https://via.placeholder.com/150x150"),
         }
         return context
 
